@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class RevolvTabBar: UIViewController {
+open class RevolvTabBar: UIViewController {
     
     private let contentView: UIView = {
         let view = UIView()
