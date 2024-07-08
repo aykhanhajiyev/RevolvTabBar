@@ -11,9 +11,17 @@ open class RevolvTabBar: UIViewController {
     
     private let contentView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    private let infoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Forgot to override viewControllers || viewControllers list is empty."
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.numberOfLines = 0
+        return label
     }()
     
     private let tabBarView: RevolvTabBarView = {
@@ -43,6 +51,14 @@ open class RevolvTabBar: UIViewController {
         if let firstVC = viewControllers.first {
             contentView.addSubview(firstVC.view)
             firstVC.didMove(toParent: self)
+        } else {
+            view.addSubview(infoLabel)
+            NSLayoutConstraint.activate([
+                infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                infoLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                infoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+                infoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            ])
         }
     }
     
