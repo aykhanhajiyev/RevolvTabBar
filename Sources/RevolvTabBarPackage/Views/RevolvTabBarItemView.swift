@@ -72,8 +72,12 @@ private extension RevolvTabBarItemView {
 }
 
 extension RevolvTabBarItemView: ConfigurableView {
-    struct Item {
+    public struct Item {
         let icon: UIImage?
+        
+        public init(icon: UIImage?) {
+            self.icon = icon
+        }
     }
     
     func configure(_ item: Item) {

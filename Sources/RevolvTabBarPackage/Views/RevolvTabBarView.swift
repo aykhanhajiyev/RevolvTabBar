@@ -62,7 +62,7 @@ extension RevolvTabBarView: ConfigurableView {
         let tintColor: UIColor?
         let selectedTintColor: UIColor?
         
-        init(items: [RevolvTabBarItemView.Item], tintColor: UIColor, selectedTintColor: UIColor) {
+        public init(items: [RevolvTabBarItemView.Item], tintColor: UIColor, selectedTintColor: UIColor) {
             self.items = items
             self.tintColor = tintColor
             self.selectedTintColor = selectedTintColor

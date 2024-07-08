@@ -30,7 +30,7 @@ open class RevolvTabBar: UIViewController {
         .defaultStyle
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(contentView)
         view.addSubview(tabBarView)
@@ -38,7 +38,7 @@ open class RevolvTabBar: UIViewController {
         setup()
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let firstVC = viewControllers.first {
             contentView.addSubview(firstVC.view)
@@ -46,7 +46,7 @@ open class RevolvTabBar: UIViewController {
         }
     }
     
-    public override func viewWillLayoutSubviews() {
+    open override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         tabBarView.addShadow()
     }
