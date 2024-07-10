@@ -70,7 +70,10 @@ private extension RevolvTabBarItemView {
     
     func changeTabButtonState() {
         iconButton.tintColor = isSelected ? selectedTintColor : customTintColor
-        iconButton.setImage(isSelected ? item?.selectedIcon : item?.icon, for: .normal)
+        
+        if let selectedIcon = item?.selectedIcon {
+            iconButton.setImage(isSelected ? selectedIcon : item?.icon, for: .normal)
+        }
     }
 }
 
