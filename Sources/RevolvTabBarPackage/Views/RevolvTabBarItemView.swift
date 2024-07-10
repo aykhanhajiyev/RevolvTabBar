@@ -25,6 +25,8 @@ public final class RevolvTabBarItemView: UIView {
     
     internal var customTintColor: UIColor? = nil
     
+    private var item: RevolvTabBarItemView.Item? = nil
+    
     private let iconButton: UIButton = {
         let iconButton = UIButton(type: .system)
         iconButton.translatesAutoresizingMaskIntoConstraints = false
@@ -68,19 +70,25 @@ private extension RevolvTabBarItemView {
     
     func changeTabButtonState() {
         iconButton.tintColor = isSelected ? selectedTintColor : customTintColor
+        iconButton.setImage(isSelected ? item?.selectedIcon : item?.icon, for: .normal)
     }
 }
 
 extension RevolvTabBarItemView: ConfigurableView {
     public struct Item {
         let icon: UIImage?
+        let selectedIcon: UIImage?
         
-        public init(icon: UIImage?) {
+        public init(icon: UIImage?, selectedIcon: UIImage? = nil) {
             self.icon = icon
+            self.selectedIcon = selectedIcon
         }
     }
     
     func configure(_ item: Item) {
-        iconButton.setImage(item.icon, for: .normal)
+        self.item = item
+        
+        let icon = isSelected ? item.selectedIcon : item.icon
+        iconButton.setImage(icon, for: .normal)
     }
 }

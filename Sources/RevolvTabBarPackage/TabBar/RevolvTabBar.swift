@@ -49,6 +49,7 @@ open class RevolvTabBar: UIViewController {
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let firstVC = viewControllers.first {
+            addChild(firstVC)
             contentView.addSubview(firstVC.view)
             firstVC.didMove(toParent: self)
         } else {
@@ -109,6 +110,7 @@ private extension RevolvTabBar {
 extension RevolvTabBar: RevolvTabBarViewProtocol {
     func didTapItem(_ item: RevolvTabBarItemView, tapIndex: Int) {
         if let tappedIndexVC = viewControllers[safe: tapIndex] {
+            addChild(tappedIndexVC)
             contentView.addSubview(tappedIndexVC.view)
             tappedIndexVC.didMove(toParent: self)
         }
