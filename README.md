@@ -123,6 +123,14 @@ override func viewDidLoad() {
 ```
 Ensure you call super.viewDidLoad() in your viewDidLoad method to properly initialize the tab bar.
 
+6. tabBarBackgroundColor:
+```swift
+override var tabBarBackgroundColor: UIColor? {
+    .red
+}
+```
+It changes background color of tabBar view.
+
 ## License
 
 RevolvTabBar is available under the MIT license. See the LICENSE file for more information
