@@ -30,12 +30,19 @@ open class RevolvTabBar: UIViewController {
         return tabBarView
     }()
     
+    /// TabBar viewControllers holder
     open var viewControllers: [UIViewController] {
         []
     }
     
+    /// TabBar items
     open var items: RevolvTabBarView.Item {
         .defaultStyle
+    }
+    
+    /// TabBar background color
+    open var tabBarBackgroundColor: UIColor? {
+        nil
     }
     
     open override func viewDidLoad() {
@@ -104,6 +111,7 @@ private extension RevolvTabBar {
     func setup() {
         tabBarView.configure(items)
         tabBarView.delegate = self
+        tabBarView.backgroundColor = tabBarBackgroundColor
     }
 }
 
