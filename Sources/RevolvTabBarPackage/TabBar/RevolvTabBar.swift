@@ -45,26 +45,22 @@ open class RevolvTabBar: UIViewController {
         nil
     }
     
+    open override func loadView() {
+        super.loadView()
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        } else {
+            view.backgroundColor = .gray
+        }
+    }
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(contentView)
         view.addSubview(tabBarView)
         configureConstraints()
         setup()
-        
-        if let firstVC = viewControllers.first {
-            addChild(firstVC)
-            contentView.addSubview(firstVC.view)
-            firstVC.didMove(toParent: self)
-        } else {
-            view.addSubview(infoLabel)
-            NSLayoutConstraint.activate([
-                infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                infoLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-                infoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-                infoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
-            ])
-        }
+        addFirstVC()
     }
     
     open override func viewWillLayoutSubviews() {
@@ -109,6 +105,24 @@ private extension RevolvTabBar {
         tabBarView.configure(items)
         tabBarView.delegate = self
         tabBarView.backgroundColor = tabBarBackgroundColor
+    }
+    
+    func addFirstVC() {
+        if let firstVC = viewControllers.first {
+            addChild(firstVC)
+            contentView.addSubview(firstVC.view)
+            firstVC.view.frame = contentView.bounds
+            firstVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            firstVC.didMove(toParent: self)
+        } else {
+            view.addSubview(infoLabel)
+            NSLayoutConstraint.activate([
+                infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                infoLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                infoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+                infoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            ])
+        }
     }
 }
 
