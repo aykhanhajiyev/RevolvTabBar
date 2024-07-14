@@ -11,7 +11,7 @@ To integrate RevolvTabBar into your Xcode project using Swift Package Manager, a
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/yourusername/RevolvTabBar.git", from: "1.0.3")
+    .package(url: "https://github.com/aykhanhajiyev/RevolvTabBar.git", from: "1.0.8")
 ]
 ```
 
