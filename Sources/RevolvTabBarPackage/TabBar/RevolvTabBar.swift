@@ -51,10 +51,7 @@ open class RevolvTabBar: UIViewController {
         view.addSubview(tabBarView)
         configureConstraints()
         setup()
-    }
-    
-    open override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         if let firstVC = viewControllers.first {
             addChild(firstVC)
             contentView.addSubview(firstVC.view)
@@ -93,10 +90,10 @@ private extension RevolvTabBar {
         // Inner functions
         func configureContentView() {
             NSLayoutConstraint.activate([
-                contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                contentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-                contentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-                contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+                contentView.topAnchor.constraint(equalTo: view.topAnchor),
+                contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
         }
         
