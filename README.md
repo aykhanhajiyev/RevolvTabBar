@@ -3,6 +3,9 @@
 
 ## RevolvTabBar
 
+- UIKit
+- SwiftUI
+
 RevolvTabBar is a customizable and easy-to-use tab bar controller for iOS applications. It allows you to quickly set up a tab bar with multiple view controllers, providing a seamless navigation experience.
 
 ## Installation
