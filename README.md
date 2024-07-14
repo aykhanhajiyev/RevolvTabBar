@@ -4,7 +4,7 @@
 ## RevolvTabBar
 
 - UIKit
-- SwiftUI
+- SwiftUI (Thanks to [Alpay Calalli](https://github.com/alpaycli))
 
 RevolvTabBar is a customizable and easy-to-use tab bar controller for iOS applications. It allows you to quickly set up a tab bar with multiple view controllers, providing a seamless navigation experience.
 
@@ -137,3 +137,7 @@ It changes background color of tabBar view.
 ## License
 
 RevolvTabBar is available under the MIT license. See the LICENSE file for more information
+
+## Authors
+- [Aykhan Hajiyev](https://github.com/aykhanhajiyev)
+- [Alpay Calalli](https://github.com/alpaycli)
