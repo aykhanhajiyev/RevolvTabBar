@@ -39,13 +39,15 @@ struct ExampleView1: View {
         print("ExampleView1 - init")
     }
     var body: some View {
-        VStack {
-            ForEach(0..<30) {
-                Text($0.formatted())
+        ScrollView {
+            VStack {
+                ForEach(0..<30) {
+                    Text($0.formatted())
+                }
             }
-        }
-        .task {
-            print("ExampleView 1 - task")
+            .task {
+                print("ExampleView 1 - task")
+            }
         }
     }
 }
@@ -71,9 +73,11 @@ struct ExampleView3: View {
     }
     var body: some View {
         NavigationView {
-            VStack {
-                ForEach(0..<20) {
-                    Text($0.formatted())
+            ScrollView {
+                VStack {
+                    ForEach(0..<20) {
+                        Text($0.formatted())
+                    }
                 }
             }
             .navigationTitle("Title")
