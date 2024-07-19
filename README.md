@@ -29,9 +29,34 @@ Then, add RevolvTabBar as a dependency to your target:
 
 ## Usage
 
-### Basic Setup
-
 Here's an example of how to set up RevolvTabBar in your project:
+
+### SwiftUI
+
+```swift
+struct RootView: View {
+    @State private var selectedTabIndex = 0
+    
+    var body: some View {
+        RevolvTabView(selection: $selectedTabIndex) {
+            TabItem(iconName: "house") {
+                HomeView()
+            }
+            
+            TabItem(iconName: "heart") {
+                FavoritesView()
+            }
+            
+            TabItem(iconName: "gear") {
+                SettingsView()
+            }
+        }
+    }
+}
+```
+
+### UIKit
+
 ```swift
 import UIKit
 import RevolvTabBar
