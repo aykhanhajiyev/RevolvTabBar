@@ -30,6 +30,13 @@ open class RevolvTabBar: UIViewController {
         return tabBarView
     }()
     
+    /// Toggle visibility tabBarView
+    open var isTabBarHidden: Bool = false {
+        didSet {
+            toggleTabView()
+        }
+    }
+    
     /// TabBar viewControllers holder
     open var viewControllers: [UIViewController] {
         []
@@ -123,6 +130,10 @@ private extension RevolvTabBar {
                 infoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
             ])
         }
+    }
+    
+    func toggleTabView() {
+        tabBarView.isHidden = isTabBarHidden
     }
 }
 
