@@ -9,6 +9,8 @@ import UIKit
 
 open class RevolvTabBar: UIViewController {
     
+    private var selectedIndex: Int = 0
+    
     private let contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -29,6 +31,11 @@ open class RevolvTabBar: UIViewController {
         tabBarView.translatesAutoresizingMaskIntoConstraints = false
         return tabBarView
     }()
+    
+    /// Visible viewController
+    open var selectedViewController: UIViewController? {
+        viewControllers[safe: selectedIndex]
+    }
     
     /// Toggle visibility tabBarView
     open var isTabBarHidden: Bool = false {
@@ -140,6 +147,7 @@ private extension RevolvTabBar {
 extension RevolvTabBar: RevolvTabBarViewProtocol {
     func didTapItem(_ item: RevolvTabBarItemView, tapIndex: Int) {
         if let tappedIndexVC = viewControllers[safe: tapIndex] {
+            selectedIndex = tapIndex
             addChild(tappedIndexVC)
             contentView.addSubview(tappedIndexVC.view)
             tappedIndexVC.didMove(toParent: self)
