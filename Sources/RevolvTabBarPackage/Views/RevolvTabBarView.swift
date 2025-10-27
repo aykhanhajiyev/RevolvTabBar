@@ -15,6 +15,11 @@ public final class RevolvTabBarView: UIView {
     
     weak var delegate: RevolvTabBarViewProtocol? = nil
     
+    private var leadingConstraint: NSLayoutConstraint?
+    private var topConstraint: NSLayoutConstraint?
+    private var trailingConstraint: NSLayoutConstraint?
+    private var bottomConstraint: NSLayoutConstraint?
+    
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -46,12 +51,24 @@ private extension RevolvTabBarView {
     }
     
     func configureConstraints() {
+        leadingConstraint = stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20)
+        topConstraint = stackView.topAnchor.constraint(equalTo: topAnchor, constant: 16)
+        trailingConstraint = stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+        bottomConstraint = stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+        
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor,  constant: 20),
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+            leadingConstraint!,
+            topConstraint!,
+            trailingConstraint!,
+            bottomConstraint!
         ])
+    }
+    
+    func updateContentInsets(_ insets: UIEdgeInsets) {
+        leadingConstraint?.constant = insets.left
+        topConstraint?.constant = insets.top
+        trailingConstraint?.constant = -insets.right
+        bottomConstraint?.constant = -insets.bottom
     }
 }
 
@@ -78,8 +95,9 @@ extension RevolvTabBarView: ConfigurableView {
         )
     }
     
-    func configure(_ item: Item, spacing: CGFloat = 28, iconSize: CGFloat = 24) {
+    func configure(_ item: Item, spacing: CGFloat = 20, iconSize: CGFloat = 40, contentInsets: UIEdgeInsets = UIEdgeInsets(top: 16, left: 20, bottom: 16, right: 20)) {
         stackView.spacing = spacing
+        updateContentInsets(contentInsets)
         item.items.enumerated().forEach { (index, subItem) in
             let subview = RevolvTabBarItemView()
             subview.configure(subItem, iconSize: iconSize)

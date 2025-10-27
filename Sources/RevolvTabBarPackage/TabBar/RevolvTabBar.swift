@@ -66,7 +66,12 @@ open class RevolvTabBar: UIViewController {
     
     /// Icon size for tab items
     open var iconSize: CGFloat {
-        40
+        24
+    }
+    
+    /// Content insets for tab bar
+    open var contentInsets: UIEdgeInsets {
+        UIEdgeInsets(top: 16, left: 20, bottom: 16, right: 20)
     }
     
     open override func loadView() {
@@ -126,7 +131,7 @@ private extension RevolvTabBar {
     }
     
     func setup() {
-        tabBarView.configure(items, spacing: stackViewSpacing, iconSize: iconSize)
+        tabBarView.configure(items, spacing: stackViewSpacing, iconSize: iconSize, contentInsets: contentInsets)
         tabBarView.delegate = self
         tabBarView.backgroundColor = tabBarBackgroundColor
     }
