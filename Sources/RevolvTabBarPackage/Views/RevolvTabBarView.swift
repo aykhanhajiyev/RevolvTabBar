@@ -19,7 +19,7 @@ public final class RevolvTabBarView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.spacing = 28
+        stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -48,9 +48,9 @@ private extension RevolvTabBarView {
     
     func configureConstraints() {
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor,  constant: 28),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor,  constant: 20),
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
         ])
     }
