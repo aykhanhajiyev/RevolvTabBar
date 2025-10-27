@@ -51,9 +51,9 @@ private extension RevolvTabBarView {
     }
     
     func configureConstraints() {
-        leadingConstraint = stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20)
+        leadingConstraint = stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28)
         topConstraint = stackView.topAnchor.constraint(equalTo: topAnchor, constant: 16)
-        trailingConstraint = stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+        trailingConstraint = stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28)
         bottomConstraint = stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
         
         NSLayoutConstraint.activate([
@@ -95,7 +95,7 @@ extension RevolvTabBarView: ConfigurableView {
         )
     }
     
-    func configure(_ item: Item, spacing: CGFloat = 20, iconSize: CGFloat = 40, contentInsets: UIEdgeInsets = UIEdgeInsets(top: 16, left: 20, bottom: 16, right: 20)) {
+    func configure(_ item: Item, spacing: CGFloat, iconSize: CGFloat, contentInsets: UIEdgeInsets) {
         stackView.spacing = spacing
         updateContentInsets(contentInsets)
         item.items.enumerated().forEach { (index, subItem) in
