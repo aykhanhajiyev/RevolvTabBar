@@ -96,7 +96,7 @@ extension RevolvTabBarItemView: ConfigurableView {
         }
     }
     
-    func configure(_ item: Item, iconSize: CGFloat = 40) {
+    func configure(_ item: Item, iconSize: CGFloat = 24) {
         self.item = item
         
         let icon = isSelected ? item.selectedIcon : item.icon

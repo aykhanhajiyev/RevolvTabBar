@@ -11,4 +11,12 @@ internal protocol ConfigurableView {
     associatedtype Item
     
     func configure(_ item: Item)
+    func configure(_ item: Item, spacing: CGFloat, iconSize: CGFloat)
+    func configure(_ item: Item, iconSize: CGFloat)
+}
+
+extension ConfigurableView {
+    func configure(_ item: Item) {}
+    func configure(_ item: Item, spacing: CGFloat, iconSize: CGFloat) {}
+    func configure(_ item: Item, iconSize: CGFloat) {}
 }

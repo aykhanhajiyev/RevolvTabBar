@@ -78,7 +78,7 @@ extension RevolvTabBarView: ConfigurableView {
         )
     }
     
-    func configure(_ item: Item, spacing: CGFloat = 20, iconSize: CGFloat = 40) {
+    func configure(_ item: Item, spacing: CGFloat = 28, iconSize: CGFloat = 24) {
         stackView.spacing = spacing
         item.items.enumerated().forEach { (index, subItem) in
             let subview = RevolvTabBarItemView()
