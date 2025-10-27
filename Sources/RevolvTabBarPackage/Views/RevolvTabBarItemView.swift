@@ -58,8 +58,8 @@ private extension RevolvTabBarItemView {
             iconButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             iconButton.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            iconButton.heightAnchor.constraint(equalToConstant: 24),
-            iconButton.widthAnchor.constraint(equalToConstant: 24)
+            iconButton.heightAnchor.constraint(equalToConstant: 40),
+            iconButton.widthAnchor.constraint(equalToConstant: 40)
         ])
     }
     
