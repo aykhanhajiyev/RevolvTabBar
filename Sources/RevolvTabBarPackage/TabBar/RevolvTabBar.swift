@@ -59,6 +59,16 @@ open class RevolvTabBar: UIViewController {
         nil
     }
     
+    /// StackView spacing between tab items
+    open var stackViewSpacing: CGFloat {
+        20
+    }
+    
+    /// Icon size for tab items
+    open var iconSize: CGFloat {
+        40
+    }
+    
     open override func loadView() {
         super.loadView()
         if #available(iOS 13.0, *) {
@@ -116,7 +126,7 @@ private extension RevolvTabBar {
     }
     
     func setup() {
-        tabBarView.configure(items)
+        tabBarView.configure(items, spacing: stackViewSpacing, iconSize: iconSize)
         tabBarView.delegate = self
         tabBarView.backgroundColor = tabBarBackgroundColor
     }

@@ -19,7 +19,6 @@ public final class RevolvTabBarView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -79,10 +78,11 @@ extension RevolvTabBarView: ConfigurableView {
         )
     }
     
-    func configure(_ item: Item) {
+    func configure(_ item: Item, spacing: CGFloat = 20, iconSize: CGFloat = 40) {
+        stackView.spacing = spacing
         item.items.enumerated().forEach { (index, subItem) in
             let subview = RevolvTabBarItemView()
-            subview.configure(subItem)
+            subview.configure(subItem, iconSize: iconSize)
             subview.delegate = self
             subview.selectedTintColor = item.selectedTintColor
             subview.customTintColor = item.tintColor

@@ -27,6 +27,8 @@ public final class RevolvTabBarItemView: UIView {
     
     private var item: RevolvTabBarItemView.Item? = nil
     
+    private var iconSizeConstraints: [NSLayoutConstraint] = []
+    
     private let iconButton: UIButton = {
         let iconButton = UIButton(type: .system)
         iconButton.translatesAutoresizingMaskIntoConstraints = false
@@ -56,11 +58,17 @@ private extension RevolvTabBarItemView {
             iconButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             iconButton.topAnchor.constraint(equalTo: topAnchor),
             iconButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            iconButton.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
-            iconButton.heightAnchor.constraint(equalToConstant: 40),
-            iconButton.widthAnchor.constraint(equalToConstant: 40)
+            iconButton.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+    
+    func updateIconSize(_ size: CGFloat) {
+        NSLayoutConstraint.deactivate(iconSizeConstraints)
+        iconSizeConstraints = [
+            iconButton.heightAnchor.constraint(equalToConstant: size),
+            iconButton.widthAnchor.constraint(equalToConstant: size)
+        ]
+        NSLayoutConstraint.activate(iconSizeConstraints)
     }
     
     @objc 
@@ -88,10 +96,11 @@ extension RevolvTabBarItemView: ConfigurableView {
         }
     }
     
-    func configure(_ item: Item) {
+    func configure(_ item: Item, iconSize: CGFloat = 40) {
         self.item = item
         
         let icon = isSelected ? item.selectedIcon : item.icon
         iconButton.setImage(icon, for: .normal)
+        updateIconSize(iconSize)
     }
 }
